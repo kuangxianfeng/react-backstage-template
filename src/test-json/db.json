@@ -1,0 +1,107 @@
+{
+    "login": {
+        "code": 200,
+        "data": {
+            "token": "123123",
+            "username": "匡先锋",
+            "tel": "13272513789",
+            "menuList": [
+                {
+                    "title": "首页",
+                    "path": "/home",
+                    "id": "1",
+                    "children": []
+                },
+                {
+                    "title": "电子签署",
+                    "id": "2",
+                    "path": "/sign",
+                    "children": [
+                        {
+                            "parentId": "2",
+                            "id": "2-1",
+                            "title": "签署管理",
+                            "path": "/sign/sign-manage"
+                        },
+                        {
+                            "parentId": "2",
+                            "id": "2-2",
+                            "title": "模版管理",
+                            "path": "/sign/template-manage"
+                        }
+                    ]
+                },
+                {
+                    "title": "费用中心",
+                    "id": "3",
+                    "path": "/cost-center",
+                    "children": [
+                        {
+                            "parentId": "3",
+                            "id": "3-1",
+                            "title": "账户管理",
+                            "path": "/cost-center/account-manage"
+                        },
+                        {
+                            "parentId": "3",
+                            "id": "3-2",
+                            "title": "使用明细",
+                            "path": "/cost-center/usage-manage"
+                        }
+                    ]
+                }
+            ]
+        },
+        "msg": "成功"
+    },
+    "getMenuList": {
+        "code": 200,
+        "data": [
+            {
+                "title": "首页",
+                "path": "/home",
+                "id": "1",
+                "children": []
+            },
+            {
+                "title": "电子签署",
+                "id": "2",
+                "path": "/sign",
+                "children": [
+                    {
+                        "parentId": "2",
+                        "id": "2-1",
+                        "title": "签署管理",
+                        "path": "/sign/sign-manage"
+                    },
+                    {
+                        "parentId": "2",
+                        "id": "2-2",
+                        "title": "模版管理",
+                        "path": "/sign/template-manage"
+                    }
+                ]
+            },
+            {
+                "title": "费用中心",
+                "id": "3",
+                "path": "/cost-center",
+                "children": [
+                    {
+                        "parentId": "3",
+                        "id": "3-1",
+                        "title": "账户管理",
+                        "path": "/cost-center/account-manage"
+                    },
+                    {
+                        "parentId": "3",
+                        "id": "3-2",
+                        "title": "使用明细",
+                        "path": "/cost-center/usage-manage"
+                    }
+                ]
+            }
+        ],
+        "msg": "成功"
+    }
+}

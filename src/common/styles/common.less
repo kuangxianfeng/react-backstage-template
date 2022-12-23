@@ -1,0 +1,130 @@
+@import (reference) './mixins.less';
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.mouse-hand {
+    cursor: pointer;
+}
+
+
+.hor-flex-start {
+    .hor-flex-mixin()
+}
+
+.hor-flex-between {
+    .hor-flex-mixin(@justifyContent: space-between)
+}
+
+.hor-flex-around {
+    .hor-flex-mixin(@justifyContent: space-around)
+}
+
+.hor-flex-center {
+    .hor-flex-mixin(@justifyContent: center)
+}
+
+.hor-flex-end {
+    .hor-flex-mixin(@justifyContent: flex-end)
+}
+
+.ver-flex-start {
+    .ver-flex-mixin()
+}
+
+.ver-flex-center {
+    .ver-flex-mixin(@justifyContent: center)
+}
+
+.ver-flex-between {
+    .ver-flex-mixin(@justifyContent: space-between)
+}
+
+.ver-flex-around {
+    .ver-flex-mixin(@justifyContent: space-around)
+}
+
+.ver-flex-end {
+    .ver-flex-mixin(@justifyContent: flex-end)
+}
+
+each(range(1, 6), {
+        h@{value} {
+            margin-bottom: 0;
+        }
+    }
+
+);
+
+// margin 和 padding 系列 从2开始 偶数 100截止
+each(range(0, 100, 2), {
+        .m@{value} {
+            margin: @value * 1px;
+        }
+
+        .p@{value} {
+            padding: @value * 1px;
+        }
+
+        .mt@{value} {
+            margin-top:@value * 1px
+        }
+
+        .ml@{value} {
+            margin-left:@value * 1px
+        }
+
+        .mb@{value} {
+            margin-bottom:@value * 1px
+        }
+
+        .mr@{value} {
+            margin-right:@value * 1px
+        }
+
+        .pt@{value} {
+            padding-top:@value * 1px
+        }
+
+        .pl@{value} {
+            padding-left:@value * 1px
+        }
+
+        .pb@{value} {
+            padding-bottom:@value * 1px
+        }
+
+        .pr@{value} {
+            padding-right:@value * 1px
+        }
+    }
+
+);
+
+// 宽高百分比（10-100）
+each(range(10, 100, 10), {
+        @percent: percentage((@value/100));
+
+        .w@{value} {
+            width: @percent;
+        }
+
+        .h@{value} {
+            height: @percent;
+        }
+    }
+
+);

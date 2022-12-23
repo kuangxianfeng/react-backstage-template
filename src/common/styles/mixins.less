@@ -1,0 +1,39 @@
+.w-h(@width: 100%; @height: 100%) {
+    width: @width * 1px;
+    height: @height * 1px;
+}
+
+// 文字组合拳
+.text-combo(@fontSize: 16, @lineHeight: 24, @color: #000, @bolded: false) {
+    font-size: @fontSize * 1px;
+    line-height: @lineHeight * 1px;
+    color: @color;
+    font-weight: if(@bolded, bold, normal);
+}
+
+// 横向弹性盒子 默认纵轴居中 横轴从头开始排列
+.hor-flex-mixin(@alignItem: center, @justifyContent: flex-start) {
+    display: flex;
+    align-items: @alignItem;
+    justify-content: @justifyContent;
+}
+
+// 纵向弹性盒子 默认纵轴居中 横轴从头开始排列
+.ver-flex-mixin(@alignItem: center, @justifyContent: flex-start) {
+    display: flex;
+    flex-direction: column;
+    align-items: @alignItem;
+    justify-content: @justifyContent;
+}
+
+// 定位mixin
+// @wc 为 true @position1为left的值，@position2为top的值
+// @wc 为 false @position1为right的值，@position2为bottom的值
+.position-mixin(@type: absolute, @wc: true, @position1: 0, @position2: 0, @z-index: 1) {
+    position: @type;
+    left: if(@wc, if(@position1>0, @position1 * 1px, 0), auto);
+    top: if(@wc, if(@position2>0, @position2 * 1px, 0), auto);
+    right: if(@wc, auto, if(@position1>0, @position1 * 1px, 0));
+    bottom: if(@wc, auto, if(@position2>0, @position2 * 1px, 0));
+    z-index: @z-index;
+}

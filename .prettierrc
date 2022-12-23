@@ -1,0 +1,22 @@
+{
+    "semi": false,
+    "singleQuote": false,
+    "trailingComma": "none",
+    "printWidth": 150,
+    "tabWidth": 4,
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": ".prettierrc",
+            "options": {
+                "parser": "json"
+            }
+        },
+        {
+            "files": "*.md",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}
