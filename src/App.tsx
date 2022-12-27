@@ -6,25 +6,23 @@ import zhCN from "antd/es/locale/zh_CN"
 import Routes from "./routes"
 import { THEME_COLOR } from "./config"
 
-const App: FC = () => {
-    return (
-        <ConfigProvider
-            locale={zhCN}
-            theme={{
-                token: {
-                    colorPrimary: THEME_COLOR
-                }
-            }}
-        >
-            <RecoilRoot>
-                <Suspense fallback={<p>loading...</p>}>
-                    <HashRouter>
-                        <Routes />
-                    </HashRouter>
-                </Suspense>
-            </RecoilRoot>
-        </ConfigProvider>
-    )
-}
+const App: FC = () => (
+    <ConfigProvider
+        locale={zhCN}
+        theme={{
+            token: {
+                colorPrimary: THEME_COLOR
+            }
+        }}
+    >
+        <RecoilRoot>
+            <Suspense fallback={<p>loading...</p>}>
+                <HashRouter>
+                    <Routes />
+                </HashRouter>
+            </Suspense>
+        </RecoilRoot>
+    </ConfigProvider>
+)
 
 export default App

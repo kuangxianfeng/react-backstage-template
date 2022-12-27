@@ -1,7 +1,7 @@
 import { lazy } from "react"
-import type { MenuProps } from "antd"
 import { ThunderboltOutlined, SwitcherOutlined, WifiOutlined } from "@ant-design/icons"
 import type { RouteObject } from "react-router-dom"
+import { AntdSiderListProps } from "@/common/types"
 
 const Home = lazy(() => import("@/pages/home"))
 const SignManage = lazy(() => import("@/pages/sign/sign-manage"))
@@ -9,7 +9,7 @@ const TemplateManage = lazy(() => import("@/pages/sign/template-manage"))
 const AccountManage = lazy(() => import("@/pages/cost-center/account-manage"))
 const UsageManage = lazy(() => import("@/pages/cost-center/usage-manage"))
 
-export const allAuthorizationList: RouteObject[] = [
+export const AllRouteList: RouteObject[] = [
     {
         path: "/home",
         element: <Home />
@@ -42,7 +42,7 @@ export const allAuthorizationList: RouteObject[] = [
     }
 ]
 
-export const AllMenuList: MenuProps["items"] = [
+export const AllMenuList: AntdSiderListProps = [
     {
         key: "/home",
         label: "首页",

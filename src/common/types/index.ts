@@ -1,13 +1,9 @@
-import { RouteObject } from "react-router-dom"
+import type { MenuProps } from 'antd'
+import type { RouteObject } from 'react-router-dom'
+/** antd 菜单栏类型 */
+export type AntdSiderListProps = Required<MenuProps>["items"]
 
-type MetaTypes = {
-    title?:string
-    icon?:JSX.Element
-}
-export type MenuListTypes = {
-    title: string
-    url: string
-    id: string
-    parentId?: string
-    children: MenuListTypes[]
-}
+/**
+ * React 路由数组
+ */
+export type RoutesListTypes = RouteObject[]
