@@ -1,10 +1,23 @@
-import { useRoute } from "@/hooks"
-import React, { FC } from "react"
-import { matchRoutes } from "react-router-dom"
-
+import React, { FC, useState, useTransition,useEffect } from "react"
+import { Spin } from "antd"
 const Home: FC = () => {
-    const { location } = useRoute()
-    return <div style={{ height: 3000 }}>home</div>
+    const [isPending, startTransition] = useTransition()
+    const [count, setCount] = useState(0)
+    useEffect(()=>{
+        console.log(isPending);
+    },[isPending])
+    function handleClick() {
+        startTransition(() => {
+            setCount(c => c + 1)
+        })
+    }
+
+    return (
+        <div>
+            {isPending && <Spin />}
+            <button onClick={handleClick}>{count}</button>
+        </div>
+    )
 }
 
 export default Home

@@ -4,16 +4,19 @@ import { loginRequest } from "./services"
 import sessionAccessor from "@/utils/session-accessor"
 import { useRoute } from "@/hooks"
 import { useSetRecoilState } from "recoil"
-import { authorizationSiderListState } from "@/common/recoil-state"
+import { authorizationRoutesListState, authorizationSiderListState } from "@/common/recoil-state"
+import { filterAuthorizationRoutesList, filterAuthorizationSiderList } from "@/utils/diff-authorization"
 
 const Login: FC = () => {
     const setAuthorizationSiderList = useSetRecoilState(authorizationSiderListState)
+    const setAuthorizationRoutesList = useSetRecoilState(authorizationRoutesListState)
     const { navigate } = useRoute()
     const login = () => {
         loginRequest().then(res => {
             const { token, menuList } = res.data
             sessionAccessor.set("token", token)
-            setAuthorizationSiderList(menuList)
+            setAuthorizationSiderList(filterAuthorizationSiderList(menuList))
+            setAuthorizationRoutesList(filterAuthorizationRoutesList(menuList))
             navigate("/")
         })
     }
