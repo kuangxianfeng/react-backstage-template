@@ -1,10 +1,9 @@
-import React, { lazy, useEffect } from "react"
+import React, { lazy, useEffect, useMemo } from "react"
+import type { RouteObject } from "react-router-dom"
+import { Navigate, useRoutes } from "react-router-dom"
+import { useRecoilState } from "recoil"
 import Layout from "@/layout"
 import sessionAccessor from "@/utils/session-accessor"
-import type { RouteObject } from "react-router-dom"
-import { Navigate } from "react-router-dom"
-import { useRoutes } from "react-router-dom"
-import { useRecoilState } from "recoil"
 import { authorizationSiderListState, authorizationRoutesListState } from "@/common/recoil-state"
 import { getMenuList } from "@/common/services"
 import { filterAuthorizationSiderList, filterAuthorizationRoutesList } from "@/utils/diff-authorization"
@@ -23,26 +22,36 @@ const Routes = () => {
                 setAuthorizationRoutesList(filterAuthorizationRoutesList(res.data))
             })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authorizationSiderList])
-    const routes: RouteObject[] = [
-        {
-            path: "/",
-            element: token ? <Layout /> : <Navigate to="/login" />,
-            children: authorizationRoutesList
-        },
-        {
-            path: "/login",
-            element: <Login />
-        },
-        {
-            path: "/not-found",
-            element: <NotFound />
+    const routes = useMemo<RouteObject[]>(() => {
+        const defaultRoutes = [
+            {
+                path: "/",
+                element: token ? <Layout /> : <Navigate to="/login" />,
+                children: authorizationRoutesList
+            },
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/not-found",
+                element: <NotFound />
+            }
+        ]
+        if (!token || authorizationSiderList.length === 0) {
+            return defaultRoutes
         }
-        // {
-        //     path: "*",
-        //     element: <Navigate replace to="not-found" />
-        // }
-    ]
+        return [
+            ...defaultRoutes,
+            {
+                path: "*",
+                element: <Navigate replace to="not-found" />
+            }
+        ]
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [authorizationRoutesList])
     return useRoutes(routes)
 }
 

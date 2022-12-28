@@ -1,11 +1,11 @@
 import React, { FC } from "react"
 import { Button } from "antd"
-import { loginRequest } from "./services"
 import sessionAccessor from "@/utils/session-accessor"
 import { useRoute } from "@/hooks"
 import { useSetRecoilState } from "recoil"
 import { authorizationRoutesListState, authorizationSiderListState } from "@/common/recoil-state"
 import { filterAuthorizationRoutesList, filterAuthorizationSiderList } from "@/utils/diff-authorization"
+import { loginRequest } from "./services"
 
 const Login: FC = () => {
     const setAuthorizationSiderList = useSetRecoilState(authorizationSiderListState)

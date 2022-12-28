@@ -1,9 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"
+import { message as AntdMessage } from 'antd'
 import sessionAccessor from "../utils/session-accessor"
 import { generateSignalKey } from "./utils"
 import { HTTP_CODE, WHITE_LIST, ABORT_CONTROLLER_MAP, MAX_RESEND_TIMES, BASE_URL, TIME_OUT, CURRENT_REQUEST_COUNT } from "./config"
 
-const instance = axios.create({
+export const instance = axios.create({
     baseURL: BASE_URL,
     timeout: TIME_OUT,
     _currentRequestCount: CURRENT_REQUEST_COUNT
@@ -70,7 +71,7 @@ function injectAbortControllerInterceptor(config: AxiosRequestConfig) {
         abortController: controller
     })
     if (signalMapValue) {
-        throw "请求重复"
+        throw new Error("请求重复")
     }
     return config
 }
@@ -109,7 +110,7 @@ function httpResponseInterceptor(response: AxiosResponseType) {
  * @param response
  * @returns
  */
-function responseSuccessInterceptor<T extends AxiosResponse<A>, A extends Api.BaseDataStructure>(response: T) {
+function responseSuccessInterceptor(response: AxiosResponse<Api.BaseDataStructure>) {
     const { data, config } = response
     // 不做任何处理，直接返回
     if (config?._customResponse) {
@@ -117,7 +118,8 @@ function responseSuccessInterceptor<T extends AxiosResponse<A>, A extends Api.Ba
     }
     if (data.code === HTTP_CODE.SUCCESS) {
         return data
-    } else if (data.code === HTTP_CODE.UNAUTHORIZED) {
+    }
+    if (data.code === HTTP_CODE.UNAUTHORIZED) {
         // 无权限进入，可以做一些退出登录 或者重定向问题
         return data
     }
@@ -138,13 +140,13 @@ function responseFailInterceptor(error: AxiosError) {
     }
     if (message === "Network Error") {
         // 网络有误
-        alert("网络有误，请检查网络是否可用")
+        AntdMessage.error("网络有误，请检查网络是否可用")
         return Promise.reject(error)
     }
     if (message.includes("timeout")) {
         // 接口超时了
         const maxResendTimes = config?._currentRequestMaxResendTimes !== undefined ? config._currentRequestMaxResendTimes : MAX_RESEND_TIMES
-        if (config?._currentRequestCount! === maxResendTimes) {
+        if (config?._currentRequestCount === maxResendTimes) {
             return Promise.reject(error)
         }
         config!._currentRequestCount!++
@@ -172,4 +174,4 @@ export const responseInterceptors = {
     httpResponseInterceptor
 }
 
-export default instance
+

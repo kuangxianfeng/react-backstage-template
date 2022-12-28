@@ -1,4 +1,5 @@
-import instance, { requestInterceptors, responseInterceptors } from "./interceptors"
+import { instance, requestInterceptors, responseInterceptors } from "./interceptors"
+
 const { requestSuccessInterceptor, requestFailInterceptor, loadingInterceptor, injectHeaderInterceptor, injectAbortControllerInterceptor } =
     requestInterceptors
 const { responseSuccessInterceptor, responseFailInterceptor, releaseAbortControllerInterceptor, httpResponseInterceptor } = responseInterceptors
@@ -11,4 +12,5 @@ instance.interceptors.request.use(requestSuccessInterceptor, requestFailIntercep
 instance.interceptors.response.use(releaseAbortControllerInterceptor)
 instance.interceptors.response.use(httpResponseInterceptor)
 instance.interceptors.response.use(responseSuccessInterceptor, responseFailInterceptor)
-export default instance
+
+export { instance as axios } from "./interceptors"

@@ -1,4 +1,4 @@
-import { FC, Suspense } from "react"
+import React, { FC, Suspense } from "react"
 import { HashRouter } from "react-router-dom"
 import { ConfigProvider } from "antd"
 import { RecoilRoot } from "recoil"

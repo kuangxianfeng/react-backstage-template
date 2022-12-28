@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil"
 import { siderCollapsedState } from "@/common/recoil-state"
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons"
 import style from "./common.module.less"
+
 const { Header: AntdHeader } = Layout
 const fontSize: CSSProperties = {
     fontSize: 20
