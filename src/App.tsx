@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from "react"
+import React, { FC } from "react"
 import { HashRouter } from "react-router-dom"
 import { ConfigProvider } from "antd"
 import { RecoilRoot } from "recoil"
@@ -16,11 +16,9 @@ const App: FC = () => (
         }}
     >
         <RecoilRoot>
-            <Suspense fallback={<p>loading...</p>}>
-                <HashRouter>
-                    <Routes />
-                </HashRouter>
-            </Suspense>
+            <HashRouter>
+                <Routes />
+            </HashRouter>
         </RecoilRoot>
     </ConfigProvider>
 )
