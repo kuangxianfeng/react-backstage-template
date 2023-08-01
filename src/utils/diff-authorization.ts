@@ -7,7 +7,7 @@ export type TreeDataTypes = {
     path?: string
 }
 /**
- * 将树结构拍平
+ * @description 将树结构拍平
  * @param treeWrap 
  * @returns 
  */
@@ -23,7 +23,7 @@ export function flatteningTree<T extends TreeDataTypes[]>(treeWrap: T) {
     return array
 }
 /**
- * 在树结构中删除指定条件的数据
+ * @description 在树结构中删除指定条件的数据
  * @param treeData 
  * @param fn 
  * @returns 
@@ -36,7 +36,7 @@ export function findChildrenDelete<T extends TreeDataTypes[]>(treeData: T, fn: (
     return treeData
 }
 /**
- * 在树结构中找出符合条件的所有层级，以 key 值作为数组
+ * @description 在树结构中找出符合条件的所有层级，以 key 值作为数组
  * @param treeData 
  * @param func 
  * @param path 
@@ -57,7 +57,7 @@ export function treeFindPath<T extends K[], K extends TreeDataTypes>(treeData: T
     return []
 }
 /**
- * 过滤权限菜单
+ * @description 过滤权限菜单
  * @param treeData 
  * @returns 
  */
@@ -66,7 +66,7 @@ export function filterAuthorizationSiderList<T extends TreeDataTypes[]>(treeData
     return findChildrenDelete(AllMenuList as any, data => !flatteningTreeData.some(item => item.path === data.key))
 }
 /**
- * 过滤权限路由
+ * @description 过滤权限路由
  * @param treeData 
  * @returns 
  */

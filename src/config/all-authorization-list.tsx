@@ -1,7 +1,15 @@
-import { lazy } from "react"
+import React, { lazy } from "react"
 import { ThunderboltOutlined, SwitcherOutlined, WifiOutlined } from "@ant-design/icons"
 import type { RouteObject } from "react-router-dom"
 import { AntdSiderListProps } from "@/common/types"
+
+// const LazyloadComponent: FC<> = ({ children }) => {
+//     const [state, setState] = useState(false)
+//     useEffect(() => {
+//         setState(old => !old)
+//     }, [])
+//     return state ? { children } : <div>1231231231</div>
+// }
 
 const Home = lazy(() => import("@/pages/home"))
 const SignManage = lazy(() => import("@/pages/sign/sign-manage"))
@@ -12,7 +20,7 @@ const UsageManage = lazy(() => import("@/pages/cost-center/usage-manage"))
 export const AllRouteList: RouteObject[] = [
     {
         path: "/home",
-        element: <Home />
+        element: <Home />,
     },
     {
         path: "/sign",

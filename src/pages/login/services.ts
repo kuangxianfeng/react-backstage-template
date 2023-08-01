@@ -1,5 +1,5 @@
-import { axios } from "@/api"
 import { AntdSiderListProps } from "@/common/types"
+import { httpInstance } from "@/http"
 
 export type LoginResponse = {
     token: string
@@ -7,4 +7,4 @@ export type LoginResponse = {
     tel: string
     menuList: AntdSiderListProps[]
 }
-export const loginRequest = () => axios.get<unknown, Api.BaseDataStructure<LoginResponse>>("/login")
+export const loginRequest = () => httpInstance.get<unknown, API.BaseDataStructure<LoginResponse>>("/login")

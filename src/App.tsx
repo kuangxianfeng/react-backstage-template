@@ -1,6 +1,6 @@
 import React, { FC } from "react"
-import { HashRouter } from "react-router-dom"
 import { ConfigProvider } from "antd"
+import { HashRouter } from 'react-router-dom'
 import { RecoilRoot } from "recoil"
 import zhCN from "antd/es/locale/zh_CN"
 import Routes from "./routes"

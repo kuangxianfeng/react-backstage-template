@@ -22,7 +22,7 @@ const Login: FC = () => {
     }
     return (
         <div>
-            <Button onClick={login}>登录</Button>
+            <Button onClick={login} type="primary">登录</Button>
         </div>
     )
 }

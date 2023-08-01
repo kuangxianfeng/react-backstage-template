@@ -20,6 +20,10 @@ p {
     flex: 1;
 }
 
+.full {
+    .w-h()
+}
+
 .mouse-hand {
     cursor: pointer;
 }
@@ -66,69 +70,63 @@ p {
 }
 
 each(range(1, 6), {
-        h@{value} {
-            margin-bottom: 0;
-        }
+    h@{value} {
+        margin-bottom: 0;
     }
-
-);
+});
 
 // margin 和 padding 系列 从2开始 偶数 100截止
 each(range(0, 100, 2), {
-        .m@{value} {
-            margin: @value * 1px;
-        }
-
-        .p@{value} {
-            padding: @value * 1px;
-        }
-
-        .mt@{value} {
-            margin-top:@value * 1px
-        }
-
-        .ml@{value} {
-            margin-left:@value * 1px
-        }
-
-        .mb@{value} {
-            margin-bottom:@value * 1px
-        }
-
-        .mr@{value} {
-            margin-right:@value * 1px
-        }
-
-        .pt@{value} {
-            padding-top:@value * 1px
-        }
-
-        .pl@{value} {
-            padding-left:@value * 1px
-        }
-
-        .pb@{value} {
-            padding-bottom:@value * 1px
-        }
-
-        .pr@{value} {
-            padding-right:@value * 1px
-        }
+    .m@{value} {
+        margin: @value * 1px;
     }
 
-);
+    .p@{value} {
+        padding: @value * 1px;
+    }
+
+    .mt@{value} {
+        margin-top:@value * 1px
+    }
+
+    .ml@{value} {
+        margin-left:@value * 1px
+    }
+
+    .mb@{value} {
+        margin-bottom:@value * 1px
+    }
+
+    .mr@{value} {
+        margin-right:@value * 1px
+    }
+
+    .pt@{value} {
+        padding-top:@value * 1px
+    }
+
+    .pl@{value} {
+        padding-left:@value * 1px
+    }
+
+    .pb@{value} {
+        padding-bottom:@value * 1px
+    }
+
+    .pr@{value} {
+        padding-right:@value * 1px
+    }
+});
 
 // 宽高百分比（10-100）
 each(range(10, 100, 10), {
-        @percent: percentage((@value/100));
+    @percent: percentage((@value/100));
 
-        .w@{value} {
-            width: @percent;
-        }
-
-        .h@{value} {
-            height: @percent;
-        }
+    .w@{value} {
+        width: @percent;
     }
 
-);
+    .h@{value} {
+        height: @percent;
+    }
+});

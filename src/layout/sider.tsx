@@ -43,9 +43,7 @@ const Sider: FC = () => {
                 onClick={menuListOnClick}
             />
         </AntdSider>
-    ) : (
-        <></>
-    )
+    ) : null
 }
 
 export default Sider

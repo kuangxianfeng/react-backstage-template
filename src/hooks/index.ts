@@ -3,7 +3,7 @@ import { useNavigate, useParams, useSearchParams, useLocation } from "react-rout
 import { FormInstance, Form } from "antd"
 
 /**
- * 获取路由相关的信息
+ * @description 获取路由相关的信息
  * @returns  params 传递的参数
  * ```
  * 比如：路由为/certificate-report/:fileId =》 /certificate-report/123
@@ -40,7 +40,7 @@ export type UseBaseFormHandleOptionsTypes = {
     auto: boolean
 }
 /**
- * 包含 Form 组件的基本操作
+ * @description 包含 Form 组件的基本操作
  * @param options  auto 是否在useEffect发起submit事件
  * @returns
  */

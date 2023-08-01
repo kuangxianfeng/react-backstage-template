@@ -1,15 +1,19 @@
-import React, { FC, Suspense } from "react"
-import { Layout, Skeleton } from "antd"
-import { Outlet } from "react-router-dom"
+import React, { FC, Suspense, useState } from "react"
+import { Layout } from "antd"
+import { Outlet, } from "react-router-dom"
+import Fallback from './fallback'
 
 const { Content: AntdContent } = Layout
 
-const Content: FC = () => (
-    <AntdContent className="overflow-scroll-y">
-        <Suspense fallback={<Skeleton />}>
-            <Outlet />
-        </Suspense>
-    </AntdContent>
-)
+const Content: FC = () => {
+    const [showLazyComponent, setShowLazyComponent] = useState(false)
+    return (
+        <AntdContent className="overflow-scroll-y">
+            <Suspense fallback={<Fallback />}>
+                <Outlet />
+            </Suspense>
+        </AntdContent>
+    )
+}
 
 export default Content

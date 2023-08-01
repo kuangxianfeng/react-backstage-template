@@ -7,7 +7,7 @@ const { Footer: AntdFooter } = Layout
 
 const Footer: FC = () => {
     const footerHide = useRecoilValue(footerHideState)
-    return footerHide ? <AntdFooter>Footer</AntdFooter> : <></>
+    return footerHide ? <AntdFooter>Footer</AntdFooter> : null
 }
 
 export default Footer

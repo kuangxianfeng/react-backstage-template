@@ -6,4 +6,4 @@ import "dayjs/locale/zh-cn"
 import "./plugins"
 
 // <React.StrictMode></React.StrictMode> 在开发模式下会导致走两次 useEffect 暂时先删掉
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(<App />)
+ReactDOM.createRoot(document.querySelector("#root") as HTMLElement).render(<App />)

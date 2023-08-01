@@ -1,5 +1,5 @@
-import { axios } from "@/api"
-import { AntdSiderListProps } from "@/common/types"
+import type { AntdSiderListProps } from "@/common/types"
+import { httpInstance } from "@/http"
 
 
-export const getMenuList = () => axios.get<unknown, Api.BaseDataStructure<AntdSiderListProps[]>>("/getMenuList")
+export const getMenuList = () => httpInstance.get<unknown, API.BaseDataStructure<AntdSiderListProps[]>>("/getMenuList")
