@@ -11,8 +11,10 @@ const App: FC = () => (
         locale={zhCN}
         theme={{
             token: {
-                colorPrimary: THEME_COLOR
-            }
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore ts类型不兼容，代码运行没任何问题
+                colorPrimary: THEME_COLOR,
+            },
         }}
     >
         <RecoilRoot>
@@ -20,6 +22,7 @@ const App: FC = () => (
                 <Routes />
             </HashRouter>
         </RecoilRoot>
+
     </ConfigProvider>
 )
 

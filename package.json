@@ -9,8 +9,8 @@
         "release": "standard-version"
     },
     "dependencies": {
-        "@ant-design/icons": "^4.8.0",
-        "antd": "^5.0.7",
+        "@ant-design/icons": "^5.2.4",
+        "antd": "^5.8.1",
         "axios": "^1.2.1",
         "dayjs": "^1.11.7",
         "json-server": "^0.17.1",
@@ -20,11 +20,11 @@
         "recoil": "^0.7.6"
     },
     "devDependencies": {
+        "@commitlint/cli": "^17.0.3",
+        "@commitlint/config-conventional": "^17.0.3",
         "@types/node": "^18.11.17",
         "@types/react": "^18.0.24",
         "@types/react-dom": "^18.0.8",
-        "@commitlint/cli": "^17.0.3",
-        "@commitlint/config-conventional": "^17.0.3",
         "@typescript-eslint/eslint-plugin": "^5.47.0",
         "@typescript-eslint/parser": "^5.47.0",
         "@vitejs/plugin-react": "^2.2.0",
